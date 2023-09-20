@@ -1,0 +1,5 @@
+--------Lista Veterinarios-----------
+nombre;apellidos;numeroColegiados
+mario;nocea;3123
+--------Lista Propietarios----------
+nombre;apellidos;numeroMascotas
