@@ -17,7 +17,6 @@ public class menu {
 		Empleados empleadoNuevo=new Empleados();
 		Scanner sc=new Scanner(System.in);
 		int opcion=0;
-		Boolean esVeterinario;
 		do {
 			System.out.println("Introduzca una opcion:");
 			opcion=sc.nextInt();

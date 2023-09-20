@@ -6,4 +6,5 @@ public interface IntMenu {
 	
 	public void GuardarFichero(List<Veterinarios> bdVeterinarios,List<Propietarios>bdPropietarios);
 	public void MostrarFichero();
+	
 }
