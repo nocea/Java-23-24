@@ -54,9 +54,8 @@ public class Empleados {
 	}
 	@Override
 	public String toString() {
-		return "Empleados [nombre=" + nombre + ", apellidos=" + apellidos + ", dni=" + dni + ", titulacion="
-				+ titulacion + ", fechaNac=" + fechaNac + ", numEmpleado=" + numEmpleado + ", numSegu=" + numSegu
-				+ ", numCuen=" + numCuen + "]";
+		return "Empleado Nº:"+numEmpleado+" [nombre=" + nombre + ", apellidos=" + apellidos + ", dni=" + dni + ", titulacion="
+				+ titulacion + ", fechaNac=" + fechaNac +"]";
 	}
 
 }

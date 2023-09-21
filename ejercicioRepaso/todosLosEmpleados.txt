@@ -1,0 +1,3 @@
+--------Todos Los empleados-----------
+Empleado Nº:1 [nombre=mario, apellidos=nocea, dni=12345678-s, titulacion=s, fechaNac=1/1/1]
+Empleado Nº:2 [nombre=mario, apellidos=ncoeaeeeee, dni=12345677-a, titulacion=aaaa, fechaNac=2/1/1]

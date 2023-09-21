@@ -40,6 +40,7 @@ public class menu {
 				}
 				break;
 			case 3:
+				interfazMenu.GuardarFichero(listaEmpleados);
 				break;
 			case 4:
 				System.out.println("ha salido");

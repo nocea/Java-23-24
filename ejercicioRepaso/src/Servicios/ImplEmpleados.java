@@ -20,9 +20,9 @@ public class ImplEmpleados implements IntEmpleados {
 		nuevoEmpleado.setDni(CreaDNI());
 		System.out.print("Titulacion mas alta del empleado:");
 		nuevoEmpleado.setTitulacion(scan.next());
-		System.out.println("Numero de Seguridad social del empleado(12):");
+		System.out.print("Numero de Seguridad social del empleado(12):");
 		nuevoEmpleado.setNumSegu(CompruebaNumero(12, "Debe tener 12 digitos"));
-		System.out.println("Numero de Cuenta Bancaria del empleado(12 últimos digitos):");
+		System.out.print("Numero de Cuenta Bancaria del empleado(12 últimos digitos):");
 		nuevoEmpleado.setNumCuen(CompruebaNumero(12, "Debe tener 12 digitos"));
 		return nuevoEmpleado;
 	}
@@ -33,11 +33,11 @@ public class ImplEmpleados implements IntEmpleados {
 		int numEmpleado;
 		int opcion = 0;
 		Empleados empleado;
-		System.out.println("Introduzca su numero de empleado que quiera modificar(1..." + listaEmpleados.size() + ")");
+		System.out.print("Introduzca su numero de empleado que quiera modificar(1..." + listaEmpleados.size() + ")");
 		do {
 			numEmpleado = scan.nextInt();
 			if (numEmpleado < 1 || numEmpleado > listaEmpleados.size()) {
-				System.out.println("Ese empleado no existe");
+				System.out.println("Ese empleado no existe.");
 			}
 		} while (numEmpleado < 1 || numEmpleado > listaEmpleados.size());
 		numEmpleado = numEmpleado - 1;
@@ -60,37 +60,37 @@ public class ImplEmpleados implements IntEmpleados {
 				switch (opcion) {
 				case 1:
 					System.out.println("Nombre actual-->" + empleado.getNombre());
-					System.out.println("Nuevo nombre-->");
+					System.out.print("Nuevo nombre-->");
 					empleado.setNombre(scan.next());
 					break;
 				case 2:
 					System.out.println("Apellidos actual-->" + empleado.getApellidos());
-					System.out.println("Nuevos Apellidos-->");
+					System.out.print("Nuevos Apellidos-->");
 					empleado.setApellidos(scan.next());
 					break;
 				case 3:
 					System.out.println("Nombre actual-->" + empleado.getFechaNac());
-					System.out.println("Nuevo nombre-->");
+					System.out.print("Nuevo nombre-->");
 					empleado.setFechaNac(CreaFecha());
 					break;
 				case 4:
 					System.out.println("DNI actual-->" + empleado.getDni());
-					System.out.println("Nuevo DNI-->");
+					System.out.print("Nuevo DNI-->");
 					empleado.setDni(CreaDNI());
 					break;
 				case 5:
 					System.out.println("Titulacion actual-->" + empleado.getTitulacion());
-					System.out.println("Nueva titulacion-->");
+					System.out.print("Nueva titulacion-->");
 					empleado.setTitulacion(scan.next());
 					break;
 				case 6:
 					System.out.println("Numero SS actual-->" + empleado.getNumSegu());
-					System.out.println("Nuevo numero-->");
+					System.out.print("Nuevo numero-->");
 					empleado.setNumSegu(CompruebaNumero(12, "Debe tener 12 digitos"));
 					break;
 				case 7:
 					System.out.println("Nombre actual-->" + empleado.getNumCuen());
-					System.out.println("Nuevo numero-->");
+					System.out.print("Nuevo numero-->");
 					empleado.setNumCuen(CompruebaNumero(6, "Debe tener 6 digitos"));
 					break;
 				}
@@ -169,17 +169,17 @@ public class ImplEmpleados implements IntEmpleados {
 		int dia, mes, año;
 		String fechaFormat;
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Introduce tu año de nacimiento:");
+		System.out.print("Introduce tu año de nacimiento:");
 		año = scan.nextInt();
 		do {
-			System.out.println("Introduce tu mes de nacimiento:");
+			System.out.print("Introduce tu mes de nacimiento:");
 			mes = scan.nextInt();
 			if (mes < 1 || mes > 12) {
 				System.out.println("Tu mes debe de estar entre 1 y 12");
 			}
 		} while (mes < 1 || mes > 12);
 		do {
-			System.out.println("Introduce tu dia de nacimiento:");
+			System.out.print("Introduce tu dia de nacimiento:");
 			dia = scan.nextInt();
 			if ((dia < 1 || dia > 31) || (dia > 30 && (mes == 4 || mes == 6 || mes == 9 || mes == 11))
 					|| (dia > 28 && mes == 2))
