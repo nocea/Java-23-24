@@ -29,7 +29,12 @@ public class menu {
 				System.out.println("Se han guardado los datos del empleado.");
 				break;
 			case 2:
+				if(listaEmpleados.isEmpty()) {
+					System.out.println("No existe ningun empleado registrado.");
+				}
+				else {
 				listaEmpleados=interfazEmpleados.ModificarEmpleado(listaEmpleados);
+				}
 				break;
 			case 3:
 				break;

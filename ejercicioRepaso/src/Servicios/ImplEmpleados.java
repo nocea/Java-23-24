@@ -22,21 +22,83 @@ public class ImplEmpleados implements IntEmpleados {
 		nuevoEmpleado.setTitulacion(scan.next());
 		System.out.println("Numero de Seguridad social del empleado(12):");
 		nuevoEmpleado.setNumSegu(CompruebaNumero(12, "Debe tener 12 digitos"));
-		System.out.println("Numero de Cuenta del empleado(12 últimos digitos):");
-		nuevoEmpleado.setNumCuen(CompruebaNumero(12,"Debe tener 12 digitos"));
+		System.out.println("Numero de Cuenta Bancaria del empleado(12 últimos digitos):");
+		nuevoEmpleado.setNumCuen(CompruebaNumero(12, "Debe tener 12 digitos"));
 		return nuevoEmpleado;
 	}
+
 	@Override
 	public List<Empleados> ModificarEmpleado(List<Empleados> listaEmpleados) {
-		Scanner scan=new Scanner(System.in);
+		Scanner scan = new Scanner(System.in);
 		int numEmpleado;
-		System.out.println("Introduzca su numero de empleado que quiera modificar(0..."+listaEmpleados.size()+")");
+		int opcion = 0;
+		Empleados empleado;
+		System.out.println("Introduzca su numero de empleado que quiera modificar(1..." + listaEmpleados.size() + ")");
 		do {
-		numEmpleado=scan.nextInt();
-		}while(numEmpleado>=0||numEmpleado<=listaEmpleados.size());
-		return null;
+			numEmpleado = scan.nextInt();
+			if (numEmpleado < 1 || numEmpleado > listaEmpleados.size()) {
+				System.out.println("Ese empleado no existe");
+			}
+		} while (numEmpleado < 1 || numEmpleado > listaEmpleados.size());
+		numEmpleado = numEmpleado - 1;
+		do {
+			System.out.println("¿Qué quieres modificar?");
+			System.out.println("1-->Nombre.");
+			System.out.println("2-->Apellidos.");
+			System.out.println("3-->Fecha Nacimiento.");
+			System.out.println("4-->DNI Empleado.");
+			System.out.println("5-->Titulacion.");
+			System.out.println("6-->Numero Seguridad Social.");
+			System.out.println("7-->Numero Cuenta Bancaria.");
+			opcion = scan.nextInt();
+			if (opcion < 0 || opcion > 7) {
+				System.out.println("Esa opcion no esta en el menu.");
+			} else {
+				empleado=listaEmpleados.get(numEmpleado);
+				switch (opcion) {
+				case 1:
+					System.out.println("Nombre actual-->" + empleado.getNombre());
+					System.out.println("Nuevo nombre-->");
+					empleado.setNombre(scan.next());
+					break;
+				case 2:
+					System.out.println("Apellidos actual-->" + empleado.getApellidos());
+					System.out.println("Nuevos Apellidos-->");
+					empleado.setApellidos(scan.next());
+					break;
+				case 3:
+					System.out.println("Nombre actual-->" + empleado.getFechaNac());
+					System.out.println("Nuevo nombre-->");
+					empleado.setFechaNac(CreaFecha());
+					break;
+				case 4:
+					System.out.println("DNI actual-->" + empleado.getDni());
+					System.out.println("Nuevo DNI-->");
+					empleado.setDni(CreaDNI());
+					break;
+				case 5:
+					System.out.println("Titulacion actual-->" + empleado.getTitulacion());
+					System.out.println("Nueva titulacion-->");
+					empleado.setTitulacion(scan.next());
+					break;
+				case 6:
+					System.out.println("Nombre actual-->" + empleado.getNombre());
+					System.out.println("Nuevo nombre-->");
+					empleado.setNombre(scan.next());
+					break;
+				case 7:
+					System.out.println("Nombre actual-->" + empleado.getNombre());
+					System.out.println("Nuevo nombre-->");
+					empleado.setNombre(scan.next());
+					break;
+				}
+				
+			}
+		} while (opcion < 0 || opcion > 7);
+		return listaEmpleados;
 	}
-	//AREGLAR ESTE METODO NO CONTROLA LOS DIGITOS
+
+	// AREGLAR ESTE METODO NO CONTROLA LOS DIGITOS
 	private String CreaDNI() {
 		// Metodo para registrar un dni y si lo introduce mal poder volver a
 		// introducirlo.
@@ -81,45 +143,49 @@ public class ImplEmpleados implements IntEmpleados {
 		// Devuelvo el numero mas la letra
 		return numerosDNI + "-" + letraDNI;
 	}
+
 	private long CompruebaNumero(int cifrasNumero, String msgErr) {
-		long numero=0;
+		long numero = 0;
 		long aux;
-		int cifras=0;
+		int cifras = 0;
 		Scanner scan = new Scanner(System.in);
 		do {
 			numero = scan.nextLong();
-			aux=numero;
-			while (aux != 0) { 
-				aux = aux / 10; 
-				cifras++; 
+			aux = numero;
+			while (aux != 0) {
+				aux = aux / 10;
+				cifras++;
 			}
 			if (cifras != cifrasNumero) {
 				System.out.println(msgErr);
-				cifras=0;
+				cifras = 0;
 			}
 		} while (cifras != cifrasNumero);
 		return numero;
 	}
+
 	private String CreaFecha() {
-		int dia,mes,año;
+		int dia, mes, año;
 		String fechaFormat;
-		Scanner scan =new Scanner(System.in);
+		Scanner scan = new Scanner(System.in);
 		System.out.println("Introduce tu año de nacimiento:");
-		año=scan.nextInt();
+		año = scan.nextInt();
 		do {
 			System.out.println("Introduce tu mes de nacimiento:");
-			mes=scan.nextInt();
-			if(mes<1||mes>12) {
+			mes = scan.nextInt();
+			if (mes < 1 || mes > 12) {
 				System.out.println("Tu mes debe de estar entre 1 y 12");
 			}
-		}while(mes<1||mes>12);
+		} while (mes < 1 || mes > 12);
 		do {
 			System.out.println("Introduce tu dia de nacimiento:");
-			dia=scan.nextInt();
-			if((dia < 1 || dia > 31) || (dia > 30 && (mes == 4 || mes == 6 || mes == 9 || mes == 11)) || (dia > 28 && mes == 2))
-                System.out.println("Dia fuera de rango");
-		}while ((dia < 1 || dia > 31) || (dia > 30 && (mes == 4 || mes == 6 || mes == 9 || mes == 11)) || (dia > 28 && mes == 2));
-		fechaFormat=dia+"/"+mes+"/"+año;
+			dia = scan.nextInt();
+			if ((dia < 1 || dia > 31) || (dia > 30 && (mes == 4 || mes == 6 || mes == 9 || mes == 11))
+					|| (dia > 28 && mes == 2))
+				System.out.println("Dia fuera de rango");
+		} while ((dia < 1 || dia > 31) || (dia > 30 && (mes == 4 || mes == 6 || mes == 9 || mes == 11))
+				|| (dia > 28 && mes == 2));
+		fechaFormat = dia + "/" + mes + "/" + año;
 		return fechaFormat;
 	}
 

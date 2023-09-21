@@ -23,7 +23,7 @@ public class ImplMenu implements IntMenu {
 	@Override
 	public List<Empleados> AsignarNumeroEmpleado(List<Empleados> listaEmpleados) {
 		for (int i = 0; i < listaEmpleados.size(); i++) {
-			listaEmpleados.get(i).setNumEmpleado(i);
+			listaEmpleados.get(i).setNumEmpleado(i+1);
 		}
 		return listaEmpleados;
 	}
