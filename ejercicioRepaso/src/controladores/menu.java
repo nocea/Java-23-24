@@ -18,6 +18,7 @@ public class menu {
 		IntMenu interfazMenu=new ImplMenu();
 		Scanner sc=new Scanner(System.in);
 		int opcion=0;
+		try {
 		do {
 			interfazMenu.MostrarMenu();
 			opcion=sc.nextInt();
@@ -29,6 +30,8 @@ public class menu {
 				System.out.println("Se han guardado los datos del empleado.");
 				break;
 			case 2:
+				//Modificar datos del empleado
+				//Si la lista esta vacia no te deja modificar
 				if(listaEmpleados.isEmpty()) {
 					System.out.println("No existe ningun empleado registrado.");
 				}
@@ -43,6 +46,9 @@ public class menu {
 				break;
 			}
 		}while(opcion!=4);
+		}catch(Exception e) {
+			System.out.println("Se ha producido una error");
+		}
 
 	}
 

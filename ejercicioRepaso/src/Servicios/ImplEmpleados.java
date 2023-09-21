@@ -50,10 +50,12 @@ public class ImplEmpleados implements IntEmpleados {
 			System.out.println("5-->Titulacion.");
 			System.out.println("6-->Numero Seguridad Social.");
 			System.out.println("7-->Numero Cuenta Bancaria.");
+			System.out.println("0-->Volver al menu.");
 			opcion = scan.nextInt();
 			if (opcion < 0 || opcion > 7) {
 				System.out.println("Esa opcion no esta en el menu.");
-			} else {
+			} 
+			else if(opcion>0||opcion<=7) {
 				empleado=listaEmpleados.get(numEmpleado);
 				switch (opcion) {
 				case 1:
@@ -82,23 +84,22 @@ public class ImplEmpleados implements IntEmpleados {
 					empleado.setTitulacion(scan.next());
 					break;
 				case 6:
-					System.out.println("Nombre actual-->" + empleado.getNombre());
-					System.out.println("Nuevo nombre-->");
-					empleado.setNombre(scan.next());
+					System.out.println("Numero SS actual-->" + empleado.getNumSegu());
+					System.out.println("Nuevo numero-->");
+					empleado.setNumSegu(CompruebaNumero(12, "Debe tener 12 digitos"));
 					break;
 				case 7:
-					System.out.println("Nombre actual-->" + empleado.getNombre());
-					System.out.println("Nuevo nombre-->");
-					empleado.setNombre(scan.next());
+					System.out.println("Nombre actual-->" + empleado.getNumCuen());
+					System.out.println("Nuevo numero-->");
+					empleado.setNumCuen(CompruebaNumero(6, "Debe tener 6 digitos"));
 					break;
 				}
-				
 			}
-		} while (opcion < 0 || opcion > 7);
+		} while (opcion != 0);
 		return listaEmpleados;
 	}
 
-	// AREGLAR ESTE METODO NO CONTROLA LOS DIGITOS
+	// ARREGLAR ESTE METODO NO CONTROLA LOS DIGITOS
 	private String CreaDNI() {
 		// Metodo para registrar un dni y si lo introduce mal poder volver a
 		// introducirlo.
@@ -113,10 +114,10 @@ public class ImplEmpleados implements IntEmpleados {
 				System.out.print("Numeros dni(8 sin letra):");
 				numerosDNI = scan.next();
 				// Compruebo si tiene al menos 8 digitos
-				if (numerosDNI.length() < 8) {
-					System.out.println("Tu dni debe tener al menos 8 digitos");
+				if (numerosDNI.length()!=8) {
+					System.out.println("Tu dni debe tener 8 digitos");
 				}
-			} while (numerosDNI.length() < 8);
+			} while (numerosDNI.length()!=8);
 			// Pido la letra del dni
 			System.out.print("Introduce la letra de tu DNI(solo se guardara el primer caracter de lo que guardes):");
 			letraDNI = scan.next().charAt(0);

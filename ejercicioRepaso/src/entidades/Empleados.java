@@ -2,14 +2,14 @@ package entidades;
 
 public class Empleados {
 	private String nombre,apellidos,dni,titulacion,fechaNac;
+	private int numEmpleado;
+	private long numSegu,numCuen;
 	public String getFechaNac() {
 		return fechaNac;
 	}
 	public void setFechaNac(String fechaNac) {
 		this.fechaNac = fechaNac;
 	}
-	private int numEmpleado;
-	private long numSegu,numCuen;
 	public int getNumEmpleado() {
 		return numEmpleado;
 	}
