@@ -1,5 +1,6 @@
 package aplicacion.Servicios;
 import aplicacion.Entidades.Propietarios;
+
 import aplicacion.Entidades.Veterinarios;
 import java.util.List;
 public interface IntMenu {

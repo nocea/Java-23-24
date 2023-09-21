@@ -1,9 +1,8 @@
 package Servicios;
+import java.util.List;
+
 import entidades.Empleados;
 public interface IntEmpleados {
-	public Empleados registroEmpleado();
-	public Empleados modificarEmpleado();
-	public String creacionDNI();
-	public long compruebaNumero(int cifrasNumero,String msgErr);
-	public String creaFecha();
+	public Empleados RegistroEmpleado();
+	public List<Empleados> ModificarEmpleado(List<Empleados> listaEmpleados);
 }

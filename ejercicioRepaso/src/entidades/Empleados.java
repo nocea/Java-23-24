@@ -52,5 +52,11 @@ public class Empleados {
 	public void setNumCuen(long numCuen) {
 		this.numCuen = numCuen;
 	}
+	@Override
+	public String toString() {
+		return "Empleados [nombre=" + nombre + ", apellidos=" + apellidos + ", dni=" + dni + ", titulacion="
+				+ titulacion + ", fechaNac=" + fechaNac + ", numEmpleado=" + numEmpleado + ", numSegu=" + numSegu
+				+ ", numCuen=" + numCuen + "]";
+	}
 
 }

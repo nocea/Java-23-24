@@ -1,12 +1,13 @@
 package Servicios;
 
+import java.util.List;
 import java.util.Scanner;
 import entidades.Empleados;
 
 public class ImplEmpleados implements IntEmpleados {
 
 	@Override
-	public Empleados registroEmpleado() {
+	public Empleados RegistroEmpleado() {
 		Empleados nuevoEmpleado = new Empleados();
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Ha iniciado el registro de Empleados");
@@ -15,24 +16,28 @@ public class ImplEmpleados implements IntEmpleados {
 		nuevoEmpleado.setNombre(scan.next());
 		System.out.print("Apellidos del Empleado:");
 		nuevoEmpleado.setApellidos(scan.next());
-		nuevoEmpleado.setFechaNac(creaFecha());
+		nuevoEmpleado.setFechaNac(CreaFecha());
+		nuevoEmpleado.setDni(CreaDNI());
 		System.out.print("Titulacion mas alta del empleado:");
 		nuevoEmpleado.setTitulacion(scan.next());
 		System.out.println("Numero de Seguridad social del empleado(12):");
-		nuevoEmpleado.setNumSegu(compruebaNumero(12, "Debe tener 12 digitos"));
+		nuevoEmpleado.setNumSegu(CompruebaNumero(12, "Debe tener 12 digitos"));
 		System.out.println("Numero de Cuenta del empleado(12 últimos digitos):");
-		nuevoEmpleado.setNumCuen(compruebaNumero(12,"Debe tener 12 digitos"));
+		nuevoEmpleado.setNumCuen(CompruebaNumero(12,"Debe tener 12 digitos"));
 		return nuevoEmpleado;
 	}
-
 	@Override
-	public Empleados modificarEmpleado() {
-		// TODO Auto-generated method stub
+	public List<Empleados> ModificarEmpleado(List<Empleados> listaEmpleados) {
+		Scanner scan=new Scanner(System.in);
+		int numEmpleado;
+		System.out.println("Introduzca su numero de empleado que quiera modificar(0..."+listaEmpleados.size()+")");
+		do {
+		numEmpleado=scan.nextInt();
+		}while(numEmpleado>=0||numEmpleado<=listaEmpleados.size());
 		return null;
 	}
-
-	@Override
-	public String creacionDNI() {
+	//AREGLAR ESTE METODO NO CONTROLA LOS DIGITOS
+	private String CreaDNI() {
 		// Metodo para registrar un dni y si lo introduce mal poder volver a
 		// introducirlo.
 		String numerosDNI;
@@ -76,16 +81,16 @@ public class ImplEmpleados implements IntEmpleados {
 		// Devuelvo el numero mas la letra
 		return numerosDNI + "-" + letraDNI;
 	}
-
-	@Override
-	public long compruebaNumero(int cifrasNumero, String msgErr) {
-		long numero;
+	private long CompruebaNumero(int cifrasNumero, String msgErr) {
+		long numero=0;
+		long aux;
 		int cifras=0;
 		Scanner scan = new Scanner(System.in);
 		do {
 			numero = scan.nextLong();
-			while (numero != 0) { 
-				numero = numero / 10; 
+			aux=numero;
+			while (aux != 0) { 
+				aux = aux / 10; 
 				cifras++; 
 			}
 			if (cifras != cifrasNumero) {
@@ -95,21 +100,27 @@ public class ImplEmpleados implements IntEmpleados {
 		} while (cifras != cifrasNumero);
 		return numero;
 	}
-
-	@Override
-	public String creaFecha() {
+	private String CreaFecha() {
 		int dia,mes,año;
+		String fechaFormat;
 		Scanner scan =new Scanner(System.in);
 		System.out.println("Introduce tu año de nacimiento:");
 		año=scan.nextInt();
-		System.out.println("Introduce tu mes de nacimiento:");
 		do {
+			System.out.println("Introduce tu mes de nacimiento:");
 			mes=scan.nextInt();
-			if(mes<1&&mes>12) {
+			if(mes<1||mes>12) {
 				System.out.println("Tu mes debe de estar entre 1 y 12");
 			}
-		}while(mes<1&&mes>12);
-		return null;
+		}while(mes<1||mes>12);
+		do {
+			System.out.println("Introduce tu dia de nacimiento:");
+			dia=scan.nextInt();
+			if((dia < 1 || dia > 31) || (dia > 30 && (mes == 4 || mes == 6 || mes == 9 || mes == 11)) || (dia > 28 && mes == 2))
+                System.out.println("Dia fuera de rango");
+		}while ((dia < 1 || dia > 31) || (dia > 30 && (mes == 4 || mes == 6 || mes == 9 || mes == 11)) || (dia > 28 && mes == 2));
+		fechaFormat=dia+"/"+mes+"/"+año;
+		return fechaFormat;
 	}
 
 }

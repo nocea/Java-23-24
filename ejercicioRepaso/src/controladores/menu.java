@@ -15,17 +15,21 @@ public class menu {
 		IntEmpleados interfazEmpleados=new ImplEmpleados();
 		List <Empleados> listaEmpleados=new ArrayList<>();
 		Empleados empleadoNuevo=new Empleados();
+		IntMenu interfazMenu=new ImplMenu();
 		Scanner sc=new Scanner(System.in);
 		int opcion=0;
 		do {
-			System.out.println("Introduzca una opcion:");
+			interfazMenu.MostrarMenu();
 			opcion=sc.nextInt();
-			switch (opcion) {
+			switch (opcion) {		
 			case 1:
 				//Registro de Empleado
-				empleadoNuevo=interfazEmpleados.registroEmpleado();
+				listaEmpleados.add(empleadoNuevo=interfazEmpleados.RegistroEmpleado());
+				listaEmpleados=interfazMenu.AsignarNumeroEmpleado(listaEmpleados);
+				System.out.println("Se han guardado los datos del empleado.");
+				break;
 			case 2:
-				
+				listaEmpleados=interfazEmpleados.ModificarEmpleado(listaEmpleados);
 				break;
 			case 3:
 				break;
