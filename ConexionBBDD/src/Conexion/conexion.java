@@ -39,10 +39,13 @@ public static void main(String[] args)  {
     Connection BaseDatos = null;
     Statement st = null; 
     try {
+    	//Conecto la base de datos
         BaseDatos = DriverManager.getConnection(url, usuario, contrasena);
         st = BaseDatos.createStatement();
+        //Ejecuto la query
         ResultSet rs = st.executeQuery("SELECT * FROM gbp_almacen.gbp_alm_cat_libros\r\n"
         		+ "ORDER BY id_libro ASC ");
+        //Mientras hay filas se guardan los datos de las columnas y se muestran
         while    ( rs.next() ) {
             int  idLibro= rs.getInt("id_libro");
             String titulo= rs.getString("titulo");
@@ -55,6 +58,7 @@ public static void main(String[] args)  {
             System.out.println("isbn:"+isbn);
             System.out.println("edicion:"+edicion);
         }
+        //cierro el result ,el statement y la conexion
         rs.close();
         st.close();
         BaseDatos.close();
