@@ -17,7 +17,7 @@ public class ImplMenu implements IntMenu {
 		System.out.println("1.-->Registrar Empleado");
 		System.out.println("2.-->Modificar Empleado");
 		System.out.println("3.-->Exportar fichero");
-		System.out.println("4.-->Cerrrar App");
+		System.out.println("4.-->Cerrar App");
 	}
 	//Metodo para guardar en un ficherio externo segun la opcion que se elija
 	@Override
