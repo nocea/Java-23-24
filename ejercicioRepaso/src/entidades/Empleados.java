@@ -1,9 +1,11 @@
 package entidades;
 
 public class Empleados {
+	//Atributos
 	private String nombre,apellidos,dni,titulacion,fechaNac;
 	private int numEmpleado;
 	private long numSegu,numCuen;
+	//Getters & Setters
 	public String getFechaNac() {
 		return fechaNac;
 	}
@@ -52,6 +54,7 @@ public class Empleados {
 	public void setNumCuen(long numCuen) {
 		this.numCuen = numCuen;
 	}
+	//TO STRING
 	@Override
 	public String toString() {
 		return "Empleado Nº:"+numEmpleado+" [nombre=" + nombre + ", apellidos=" + apellidos + ", dni=" + dni + ", titulacion="

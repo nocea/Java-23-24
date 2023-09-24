@@ -12,20 +12,25 @@ import Servicios.IntMenu;
 public class menu {
 
 	public static void main(String[] args) {
+		//Intstancio la interfaz de empleadosy la del menu
 		IntEmpleados interfazEmpleados=new ImplEmpleados();
-		List <Empleados> listaEmpleados=new ArrayList<>();
-		Empleados empleadoNuevo=new Empleados();
 		IntMenu interfazMenu=new ImplMenu();
+		//Creo una lista que me sirve como base de datos
+		List <Empleados> listaEmpleados=new ArrayList<>();
+		//Creo un nuevo objeto Empleados
+		Empleados empleadoNuevo=new Empleados();
 		Scanner sc=new Scanner(System.in);
 		int opcion=0;
 		try {
 		do {
+			//Muestro el menu
 			interfazMenu.MostrarMenu();
 			opcion=sc.nextInt();
 			switch (opcion) {		
 			case 1:
 				//Registro de Empleado
 				listaEmpleados.add(empleadoNuevo=interfazEmpleados.RegistroEmpleado());
+				//Guardo el empleado en la lista
 				listaEmpleados=interfazMenu.AsignarNumeroEmpleado(listaEmpleados);
 				System.out.println("Se han guardado los datos del empleado.");
 				break;
@@ -40,15 +45,17 @@ public class menu {
 				}
 				break;
 			case 3:
+				//Guardar en fichero
 				interfazMenu.GuardarFichero(listaEmpleados);
 				break;
 			case 4:
-				System.out.println("ha salido");
+				
+				System.out.println("!Ha salido de la app¡");
 				break;
 			}
 		}while(opcion!=4);
 		}catch(Exception e) {
-			System.out.println("Se ha producido una error");
+			System.out.println("Se ha producido una error.");
 		}
 
 	}

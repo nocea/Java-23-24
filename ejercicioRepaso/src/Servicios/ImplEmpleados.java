@@ -5,7 +5,7 @@ import java.util.Scanner;
 import entidades.Empleados;
 
 public class ImplEmpleados implements IntEmpleados {
-
+	//Metodo que crea un nuevo objeto de empeado rellena sus atributos y lo devuelve ya creado.
 	@Override
 	public Empleados RegistroEmpleado() {
 		Empleados nuevoEmpleado = new Empleados();
@@ -26,7 +26,7 @@ public class ImplEmpleados implements IntEmpleados {
 		nuevoEmpleado.setNumCuen(CompruebaNumero(12, "Debe tener 12 digitos"));
 		return nuevoEmpleado;
 	}
-
+	//Metodo que obtiene una lista de objetos empleado y devuelve la lista con esa modificacion
 	@Override
 	public List<Empleados> ModificarEmpleado(List<Empleados> listaEmpleados) {
 		Scanner scan = new Scanner(System.in);
@@ -34,6 +34,7 @@ public class ImplEmpleados implements IntEmpleados {
 		int opcion = 0;
 		Empleados empleado;
 		System.out.print("Introduzca su numero de empleado que quiera modificar(1..." + listaEmpleados.size() + ")");
+		//Si el numero de empleado introducido es mas pequeño o mas grande que el tamaño de la lista lo vuelve a preguntar.
 		do {
 			numEmpleado = scan.nextInt();
 			if (numEmpleado < 1 || numEmpleado > listaEmpleados.size()) {
@@ -41,6 +42,7 @@ public class ImplEmpleados implements IntEmpleados {
 			}
 		} while (numEmpleado < 1 || numEmpleado > listaEmpleados.size());
 		numEmpleado = numEmpleado - 1;
+		//Pregunto que quiere modificar
 		do {
 			System.out.println("¿Qué quieres modificar?");
 			System.out.println("1-->Nombre.");
@@ -56,6 +58,7 @@ public class ImplEmpleados implements IntEmpleados {
 				System.out.println("Esa opcion no esta en el menu.");
 			} 
 			else if(opcion>0||opcion<=7) {
+				//Muestro el dato anterior y se introduce el nuevo.
 				empleado=listaEmpleados.get(numEmpleado);
 				switch (opcion) {
 				case 1:
@@ -98,11 +101,8 @@ public class ImplEmpleados implements IntEmpleados {
 		} while (opcion != 0);
 		return listaEmpleados;
 	}
-
-	// ARREGLAR ESTE METODO NO CONTROLA LOS DIGITOS
+	//Metodo para la creacion del dni.
 	private String CreaDNI() {
-		// Metodo para registrar un dni y si lo introduce mal poder volver a
-		// introducirlo.
 		String numerosDNI;
 		char letraDNI;
 		char sino;
@@ -144,7 +144,7 @@ public class ImplEmpleados implements IntEmpleados {
 		// Devuelvo el numero mas la letra
 		return numerosDNI + "-" + letraDNI;
 	}
-
+	//Metodo para comprobar el numero de cifras que tiene un numero
 	private long CompruebaNumero(int cifrasNumero, String msgErr) {
 		long numero = 0;
 		long aux;
@@ -152,7 +152,9 @@ public class ImplEmpleados implements IntEmpleados {
 		Scanner scan = new Scanner(System.in);
 		do {
 			numero = scan.nextLong();
+			//Guardo el numero para que al dividirlo no se cambie
 			aux = numero;
+			//Cada vez que lo divido entre 10 sumo una cifra has ta que llegue a 0
 			while (aux != 0) {
 				aux = aux / 10;
 				cifras++;
@@ -164,11 +166,12 @@ public class ImplEmpleados implements IntEmpleados {
 		} while (cifras != cifrasNumero);
 		return numero;
 	}
-
+	//Metodo para crear Fechas segun tu dia año y mes de nacimiento.
 	private String CreaFecha() {
 		int dia, mes, año;
 		String fechaFormat;
 		Scanner scan = new Scanner(System.in);
+		//pido los datos
 		System.out.print("Introduce tu año de nacimiento:");
 		año = scan.nextInt();
 		do {
@@ -179,6 +182,7 @@ public class ImplEmpleados implements IntEmpleados {
 			}
 		} while (mes < 1 || mes > 12);
 		do {
+			//condiciones del dia para segun el mes que se haya introducido.
 			System.out.print("Introduce tu dia de nacimiento:");
 			dia = scan.nextInt();
 			if ((dia < 1 || dia > 31) || (dia > 30 && (mes == 4 || mes == 6 || mes == 9 || mes == 11))

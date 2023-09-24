@@ -10,7 +10,7 @@ import java.util.Scanner;
 import entidades.Empleados;
 
 public class ImplMenu implements IntMenu {
-
+	//Metodo para mostrar las opciones del menu
 	@Override
 	public void MostrarMenu() {
 		System.out.println("Introduzca una opcion:");
@@ -19,7 +19,7 @@ public class ImplMenu implements IntMenu {
 		System.out.println("3.-->Exportar fichero");
 		System.out.println("4.-->Cerrrar App");
 	}
-
+	//Metodo para guardar en un ficherio externo segun la opcion que se elija
 	@Override
 	public void GuardarFichero(List<Empleados> listaEmpleados) {
 		int opcion = 0;
@@ -44,6 +44,7 @@ public class ImplMenu implements IntMenu {
 							System.out.println("Ese empleado no existe");
 						}
 					} while (empleado < 1 || empleado > listaEmpleados.size());
+					//Para guardar los datos de un solo empleado
 					try {
 						ruta = new File("unSoloEmpleado.txt");
 						fw = new FileWriter(ruta);
@@ -61,6 +62,7 @@ public class ImplMenu implements IntMenu {
 						}
 					}
 				} else {
+					//Para guardar la lista de empleados que hay en el menu de todos los empleados
 					try {
 						ruta = new File("todosLosEmpleados.txt");
 						fw = new FileWriter(ruta);
@@ -84,7 +86,7 @@ public class ImplMenu implements IntMenu {
 		} while (opcion < 1 || opcion < 2);
 		System.out.println("¡¡Se ha guardado toda la información en la carpeta del proyecto!!");
 	}
-
+	//Metodo que le asigna un nuevo numero a cada empleado de la lista
 	@Override
 	public List<Empleados> AsignarNumeroEmpleado(List<Empleados> listaEmpleados) {
 		for (int i = 0; i < listaEmpleados.size(); i++) {
